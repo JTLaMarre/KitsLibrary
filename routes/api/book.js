@@ -40,4 +40,18 @@ res.status(500).send('Server Error');
 
 })
 
+router.delete('/:id', async(req,res)=>{
+    try{
+        const book = await Book.findById(req.params.id);
+
+        if(!book){
+            return res.status(404).json({msg:"book not found"})
+        }
+        await book.remove();
+    }catch(err){
+        console.error('Server error');
+        res.status(500).send('Server Error')
+    }
+})
+
 module.exports = router;
