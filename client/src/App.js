@@ -59,7 +59,16 @@ function App() {
     console.log(search)
     await axios.get('/api/book/'+search)
     .then((res)=>{
-      console.log(res.data.Title)
+      console.log(res)
+      console.log(res.data)
+      if(res.data===null){
+        alert("you don't own this book")
+      }
+      else{
+        alert(`you own, ${res.data.Title}`)
+      }
+      
+
     })
   }
 
