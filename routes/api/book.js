@@ -42,16 +42,28 @@ res.status(500).send('Server Error');
 
 router.delete('/:id', async(req,res)=>{
     try{
-        const book = await Book.findById(req.params.id);
+        const book = await Book.findByIdAndDelete(req.params.id);
 
         if(!book){
             return res.status(404).json({msg:"book not found"})
         }
         await book.remove();
+        res.json({msg:"book removed"})
     }catch(err){
         console.error('Server error');
         res.status(500).send('Server Error')
     }
 })
+// @route /book
+// @desc getss all book 
+router.get('/:id',async(req,res)=>{
+    try{
+    const books = await Book.findOne(req.params.id)
+    res.json(books);
+    }catch(err){
+        console.error(err.message);
+        res.status(500).send('server error');
+    }
+    })
 
 module.exports = router;
