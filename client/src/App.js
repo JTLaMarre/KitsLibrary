@@ -7,6 +7,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import InputGroup from 'react-bootstrap/InputGroup';
+import FormControl from 'react-bootstrap/FormControl';
 
 
 function App() {
@@ -15,13 +17,14 @@ function App() {
   const [title, setTitle]=useState('');
   const [author, setAuthor]=useState('');
   const[bookType, setBookType]=useState('');
+  const[search, setSearch]=useState('');
 
   useEffect(() => {
     handleBooks();
   }, [])
 
   const handleBooks = async () => {
-    const res = await axios.get('/api/book')
+     await axios.get('/api/book')
       .then((res => {
 
         console.log(res.data)
@@ -52,9 +55,27 @@ function App() {
     handleBooks();
   }
 
+  const searchByTitle= async ()=>{
+    console.log(search)
+    await axios.get('/api/book/'+search)
+    .then((res)=>{
+      console.log(res.data.Title)
+    })
+  }
+
 
   return (
     <Container>
+      <Row>
+        <Col>
+        <InputGroup className="mb-3">
+    <InputGroup.Prepend>
+      <Button variant="outline-secondary" onClick={searchByTitle}>Button</Button>
+    </InputGroup.Prepend>
+    <FormControl aria-describedby="basic-addon1" placeholder="Search for books here" value={search} onChange={e=>setSearch(e.target.value)} />
+  </InputGroup>
+        </Col>
+      </Row>
       <Row>
         <Col>
           <Form>

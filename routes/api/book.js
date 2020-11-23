@@ -56,10 +56,10 @@ router.delete('/:id', async(req,res)=>{
 })
 // @route /book
 // @desc getss all book 
-router.get('/:id',async(req,res)=>{
+router.get('/:Title',async(req,res)=>{
     try{
-    const books = await Book.findOne(req.params.id)
-    res.json(books);
+    const book = await Book.findOne({Title:req.params.Title})
+    res.json(book);
     }catch(err){
         console.error(err.message);
         res.status(500).send('server error');
