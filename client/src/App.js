@@ -79,7 +79,7 @@ function App() {
         <Col>
         <InputGroup className="mb-3">
     <InputGroup.Prepend>
-      <Button variant="outline-secondary" onClick={searchByTitle}>Button</Button>
+      <Button variant="outline-secondary" onClick={searchByTitle}>Search</Button>
     </InputGroup.Prepend>
     <FormControl aria-describedby="basic-addon1" placeholder="Search for books here" value={search} onChange={e=>setSearch(e.target.value)} />
   </InputGroup>
