@@ -35,4 +35,8 @@
   to {
     transform: rotate(360deg);
   }
+  
 }
+#jumbo {background-image: linear-gradient(to right, red, black);}
+
+#bar{color: white;}
