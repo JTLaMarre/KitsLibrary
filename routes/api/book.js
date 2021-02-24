@@ -6,7 +6,7 @@ const config = require('config');
 const Book = require('../../models/Book');
 
 // @route /book
-// @desc getss all book 
+// @desc gets all book 
 router.get('/',async(req,res)=>{
 try{
 const books = await Book.find().sort();
@@ -55,10 +55,12 @@ router.delete('/:id', async(req,res)=>{
     }
 })
 // @route /book
-// @desc getss all book 
+// @desc gets all book 
 router.get('/:Title',async(req,res)=>{
     try{
-    const book = await Book.findOne({Title:req.params.Title})
+    const title = req.params.Title;
+    const book = await Book.find({Title: {$regex: title}});
+
     res.json(book);
     }catch(err){
         console.error(err.message);
@@ -66,4 +68,7 @@ router.get('/:Title',async(req,res)=>{
     }
     })
 
+
+
+   
 module.exports = router;

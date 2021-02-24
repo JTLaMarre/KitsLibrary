@@ -62,11 +62,19 @@ function App() {
       .then((res) => {
         console.log(res)
         console.log(res.data)
-        if (res.data === null) {
+        if (res.data.length === 0) {
           alert("you don't own this book")
         }
         else {
-          alert(`you own, ${res.data.Title}`)
+          let books = [];
+          res.data.forEach(element => {
+            books.push(element.Title)
+          });
+          let titles = books.toString();
+
+          alert(` you own ${titles}`)
+          
+          
         }
 
 
