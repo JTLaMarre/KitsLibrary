@@ -20,7 +20,7 @@ res.json(books);
 // @desc gets all Dvds 
 router.get('/Dvd',async(req,res)=>{
 try{
-const books = await Book.find({BookType:"Dvd"});
+const books = await Book.find({BookType:"Dvd"}).sort('Title');
 res.json(books);
 }catch(err){
     console.error(err.message);
@@ -31,7 +31,7 @@ res.json(books);
 // @desc gets all Manga 
 router.get('/Manga',async(req,res)=>{
 try{
-const books = await Book.find({BookType:"Manga"});
+const books = await Book.find({BookType:"Manga"}).sort('Title');
 res.json(books);
 }catch(err){
     console.error(err.message);
@@ -42,7 +42,7 @@ res.json(books);
 // @desc gets all Comic 
 router.get('/Comic',async(req,res)=>{
 try{
-const books = await Book.find({BookType:"Comic"});
+const books = await Book.find({BookType:"Comic"}).sort('Title');
 res.json(books);
 }catch(err){
     console.error(err.message);
@@ -53,7 +53,7 @@ res.json(books);
 // @desc gets all novels 
 router.get('/novel',async(req,res)=>{
 try{
-const books = await Book.find({BookType:"Book"});
+const books = await Book.find({BookType:"Book"}).sort('Title');
 res.json(books);
 }catch(err){
     console.error(err.message);
