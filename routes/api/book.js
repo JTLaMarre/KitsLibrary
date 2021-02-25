@@ -16,6 +16,50 @@ res.json(books);
     res.status(500).send('server error');
 }
 })
+// @route /book/Dvd
+// @desc gets all Dvds 
+router.get('/Dvd',async(req,res)=>{
+try{
+const books = await Book.find({BookType:"Dvd"});
+res.json(books);
+}catch(err){
+    console.error(err.message);
+    res.status(500).send('server error');
+}
+})
+// @route /book/Manga
+// @desc gets all Manga 
+router.get('/Manga',async(req,res)=>{
+try{
+const books = await Book.find({BookType:"Manga"});
+res.json(books);
+}catch(err){
+    console.error(err.message);
+    res.status(500).send('server error');
+}
+})
+// @route /book/Comic
+// @desc gets all Comic 
+router.get('/Comic',async(req,res)=>{
+try{
+const books = await Book.find({BookType:"Comic"});
+res.json(books);
+}catch(err){
+    console.error(err.message);
+    res.status(500).send('server error');
+}
+})
+// @route /book/book
+// @desc gets all novels 
+router.get('/novel',async(req,res)=>{
+try{
+const books = await Book.find({BookType:"Book"});
+res.json(books);
+}catch(err){
+    console.error(err.message);
+    res.status(500).send('server error');
+}
+})
 
 // @route /book
 // @desc post a book
