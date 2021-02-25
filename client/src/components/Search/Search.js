@@ -1,19 +1,21 @@
 /* eslint-disable no-unused-vars */
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
+import {BooksContext} from '../../contexts/BooksContext';
 
 function Search() {
-  const [books, setBooks] = useState([]);
+  const {books, setBooks} = useContext(BooksContext);
   const [search, setSearch] = useState("");
 
   useEffect(() => {
     handleBooks();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleBooks = async () => {

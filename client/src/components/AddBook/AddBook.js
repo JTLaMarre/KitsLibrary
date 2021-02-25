@@ -1,14 +1,15 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import {BooksContext} from '../../contexts/BooksContext';
 
 
 function AddBook() {
-  const [books, setBooks] = useState([]);
+  const { setBooks} = useContext(BooksContext);
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
   const [bookType, setBookType] = useState('');
@@ -24,22 +25,22 @@ function AddBook() {
     await axios.get("/api/book").then((res) => {
       console.log(res.data);
       setBooks(res.data);
-      console.log(books);
     });
-  };
+};
 
-  const handleSubmit = () => {
+const handleSubmit = () => {
     console.log(title, author, bookType)
     axios({
-      method: 'post',
-      url: 'api/book',
-      data: {
-        Title: title,
-        Author: author,
-        BookType: bookType
-      }
+        method: 'post',
+        url: 'api/book',
+        data: {
+            Title: title,
+            Author: author,
+            BookType: bookType
+        }
     })
     handleBooks();
+    window.location.reload();
   }
 
 
