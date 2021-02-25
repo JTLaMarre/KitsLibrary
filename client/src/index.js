@@ -6,10 +6,11 @@ import reportWebVitals from './reportWebVitals';
 import BooksContextProvider from "./contexts/BooksContext";
 import { BrowserRouter } from 'react-router-dom';
 
+
 ReactDOM.render(
   <React.StrictMode>
   <BrowserRouter>
-  <BooksContextProvider>
+  <BooksContextProvider>    
     <App />
   </BooksContextProvider>
   </BrowserRouter>

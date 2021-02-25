@@ -18,7 +18,7 @@ res.json(books);
 })
 // @route /book/Dvd
 // @desc gets all Dvds 
-router.get('/Dvd',async(req,res)=>{
+router.get('/Dvds',async(req,res)=>{
 try{
 const books = await Book.find({BookType:"Dvd"}).sort('Title');
 res.json(books);
@@ -40,7 +40,7 @@ res.json(books);
 })
 // @route /book/Comic
 // @desc gets all Comic 
-router.get('/Comic',async(req,res)=>{
+router.get('/Comics',async(req,res)=>{
 try{
 const books = await Book.find({BookType:"Comic"}).sort('Title');
 res.json(books);
@@ -51,7 +51,7 @@ res.json(books);
 })
 // @route /book/book
 // @desc gets all novels 
-router.get('/novel',async(req,res)=>{
+router.get('/Novels',async(req,res)=>{
 try{
 const books = await Book.find({BookType:"Book"}).sort('Title');
 res.json(books);
