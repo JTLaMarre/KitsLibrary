@@ -9,7 +9,7 @@ const Book = require('../../models/Book');
 // @desc gets all book 
 router.get('/',async(req,res)=>{
 try{
-const books = await Book.find().sort();
+const books = await Book.find().sort('Title');
 res.json(books);
 }catch(err){
     console.error(err.message);

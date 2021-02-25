@@ -1,15 +1,15 @@
+/* eslint-disable no-unused-vars */
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 
 function Search() {
-  const [books, setBooks] = useState([]);  
+  const [books, setBooks] = useState([]);
   const [search, setSearch] = useState("");
 
   useEffect(() => {
@@ -43,26 +43,25 @@ function Search() {
   };
 
   // html to render
-  return(
-
-      <Row md={4}>
-    <Col>
-      <InputGroup className="mb-3">
-        <InputGroup.Prepend>
-          <Button variant="outline-secondary" onClick={searchByTitle}>
-            Search
-          </Button>
-        </InputGroup.Prepend>
-        <FormControl
-          aria-describedby="basic-addon1"
-          placeholder="Search for books here"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-      </InputGroup>
-    </Col>
-  </Row>
-)
+  return (
+    <Row md={4}>
+      <Col>
+        <InputGroup className="mb-3">
+          <InputGroup.Prepend>
+            <Button variant="outline-secondary" onClick={searchByTitle}>
+              Search
+            </Button>
+          </InputGroup.Prepend>
+          <FormControl
+            aria-describedby="basic-addon1"
+            placeholder="Search for books here"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </InputGroup>
+      </Col>
+    </Row>
+  );
 }
 
 export default Search;
