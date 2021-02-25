@@ -1,4 +1,5 @@
 import './App.css';
+import Search from './components/Search/Search'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
@@ -56,30 +57,31 @@ function App() {
     handleBooks();
   }
 
-  const searchByTitle = async () => {
-    console.log(search)
-    await axios.get('/api/book/' + search)
-      .then((res) => {
-        console.log(res)
-        console.log(res.data)
-        if (res.data.length === 0) {
-          alert("you don't own this book")
-        }
-        else {
-          let books = [];
-          res.data.forEach(element => {
-            books.push(element.Title)
-          });
-          let titles = books.toString();
+  // const searchByTitle = async () => {
+  //   console.log(search)
+  //   await axios.get('/api/book/' + search)
+  //     .then((res) => {
+  //       console.log(res)
+  //       console.log(res.data)
+  //       if (res.data.length === 0) {
+  //         alert("you don't own this book")
+  //       }
+  //       else {
+  //         let books = [];
+  //         res.data.forEach(element => {
+  //           books.push(element.Title)
+  //         });
+  //         let titles = books.toString();
 
-          alert(` you own ${titles}`)
+  //         alert(` you own ${titles}`)
           
           
-        }
+  //       }
 
 
-      })
-  }
+  //     })
+  // }
+  // 
 
 
   return (
@@ -89,7 +91,8 @@ function App() {
           <h1 id='bar'>Home Library</h1>
         </Container>
       </Jumbotron>
-      <Row md={4}>
+      <Search/>
+      {/* <Row md={4}>
         <Col>
           <InputGroup className="mb-3">
             <InputGroup.Prepend>
@@ -98,7 +101,7 @@ function App() {
             <FormControl aria-describedby="basic-addon1" placeholder="Search for books here" value={search} onChange={e => setSearch(e.target.value)} />
           </InputGroup>
         </Col>
-      </Row>
+      </Row> */}
       <Row md={4}>
         <Col>
           <Form>
